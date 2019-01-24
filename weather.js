@@ -1,6 +1,6 @@
 class Weather {
-      constructor(zip) {
-            this.apiKey = 'AFaQN7768LAnKwdOgB24UPXi1VEv0nkJ';
+      constructor(zip, api) {
+            this.apiKey = api;
             this.zipCode = zip;
       }
 
@@ -21,8 +21,8 @@ class Weather {
 
 
 class Location {
-      constructor(zip) {
-            this.apiKey = 'AFaQN7768LAnKwdOgB24UPXi1VEv0nkJ';
+      constructor(zip,api) {
+            this.apiKey = api;
             this.zipCode = zip;
       }
 

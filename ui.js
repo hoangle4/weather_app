@@ -31,7 +31,7 @@ class UI {
 
             this.humidity.textContent = `Day Light: ${weather.DailyForecasts[0].HoursOfSun} hour(s)`;
 
-            this.icon.setAttribute('src', `https://developer.accuweather.com/sites/default/files/${weather.DailyForecasts[0].Day.Icon}-s.png`);
+            this.icon.setAttribute('src', `https://developer.accuweather.com/sites/default/files/0${weather.DailyForecasts[0].Day.Icon}-s.png`);
 
       }
       paint_loc(loc) {

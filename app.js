@@ -1,17 +1,17 @@
 const ui = new UI();
-const loc = new Location();
 
+const storage = new Storage();
+const getlocation_data = storage.get_location_data();
 
-document.addEventListener('DOMContentLoaded', get_location)
+const loc = new Location(getlocation_data.zipCode, api_key);
 
 document.getElementById('w-change-btn').addEventListener('click',  (e) => {
-
+      const zip_code = document.getElementById('zip-code').value;
       const loc_id = document.getElementById('loc-id').textContent;
  
       weather.change_weather(loc_id);
-      console.log(loc_id);
       get_weather();
-      
+      storage.set_location_data(zip_code, loc_id);
       $('#locModal').modal('hide');
       
 });
@@ -26,7 +26,6 @@ document.getElementById('zip-code').addEventListener('keyup',  (e) => {
             loc.get_location()
             .then(results => {
                   ui.paint_loc(results[0]);
-                  console.log(results[0]);
             })
             .catch(err => console.log(err));
 
@@ -34,17 +33,16 @@ document.getElementById('zip-code').addEventListener('keyup',  (e) => {
       }
 
 
-const weather = new Weather('97015');
+const weather = new Weather(getlocation_data.locId, api_key);
 
-// weather.change_weather('97116');
+
 // Change Weather 
-document.addEventListener('DOMContentLoaded', get_weather)
+document.addEventListener('DOMContentLoaded', get_weather);
 
       function get_weather() {
             weather.get_weather()
             .then(results => {
                   ui.paint(results);
-                  console.log(results);
             })
             .catch(err => console.log(err));
 
