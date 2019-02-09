@@ -13,7 +13,9 @@ class UI {
 
       }
       paint(weather) {
-
+            const fileNum = weather.DailyForecasts[0].Day.Icon;
+            const myVar = (fileNum < 10) ? String("0" + fileNum) : fileNum;
+            
             this.string.textContent = weather.DailyForecasts[0].Day.ShortPhrase;
 
             this.desc.textContent = `
@@ -31,8 +33,7 @@ class UI {
 
             this.humidity.textContent = `Day Light: ${weather.DailyForecasts[0].HoursOfSun} hour(s)`;
 
-            this.icon.setAttribute('src', `https://developer.accuweather.com/sites/default/files/0${weather.DailyForecasts[0].Day.Icon}-s.png`);
-
+            this.icon.setAttribute('src', `https://developer.accuweather.com/sites/default/files/${myVar}-s.png`);
       }
       paint_loc(loc) {
             this.location.textContent =`
