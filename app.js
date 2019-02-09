@@ -2,8 +2,8 @@ const ui = new UI();
 
 const storage = new Storage();
 const getlocation_data = storage.get_location_data();
-
-const loc = new Location(getlocation_data.zipCode, api_key);
+let api_config = api_key;
+const loc = new Location(getlocation_data.zipCode, api_config);
 
 document.getElementById('w-change-btn').addEventListener('click',  (e) => {
       const zip_code = document.getElementById('zip-code').value;
